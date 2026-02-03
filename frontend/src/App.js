@@ -18,7 +18,7 @@ function App() {
   const [file, setFile] = useState(null);
 
   const fetchTasks = async () => {
-    const res = await axios.get("http://localhost:5000/api/tasks");
+    const res = await axios.get("https://taskmanager-1-ux0t.onrender.com/api/tasks");
     setTasks(res.data);
   };
 
@@ -33,23 +33,23 @@ function App() {
     formData.append("deadline", form.deadline);
     if (file) formData.append("file", file);
 
-    await axios.post("http://localhost:5000/api/tasks", formData);
+    await axios.post("https://taskmanager-1-ux0t.onrender.com/api/tasks", formData);
     setOpen(false);
     fetchTasks();
   };
 
   const markDone = async (id) => {
-    await axios.patch(`http://localhost:5000/api/tasks/${id}/done`);
+    await axios.patch(`https://taskmanager-1-ux0t.onrender.com/api/tasks/${id}/done`);
     fetchTasks();
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+    await axios.delete(`https://taskmanager-1-ux0t.onrender.com/api/tasks/${id}`);
     fetchTasks();
   };
 
   const downloadFile = (id) => {
-    window.open(`http://localhost:5000/api/tasks/${id}/file`);
+    window.open(`https://taskmanager-1-ux0t.onrender.com/api/tasks/${id}/file`);
   };
 
   return (
